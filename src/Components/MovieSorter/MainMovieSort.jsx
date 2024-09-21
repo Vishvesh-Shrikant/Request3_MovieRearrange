@@ -53,18 +53,25 @@ const MainMovieSort = () => {
 
   const handleClick=(e)=>{
     e.preventDefault();
+    let flag=0;
     setIsCorrect(false)
     for (let i=0; i< movieList.length - 1; i++)
     {
       if(movieList[i].id < movieList[i+1].id)
-        continue
+        flag=1;
+      else
+        flag=0
     }
-    if(!isCorrect)
+    if(flag==0)
     {
+      setIsCorrect(false)
       alert("Incorrect List Order! Try Again")
-      return;
     }
-    setIsCorrect(true)
+    else if(flag==1)
+    {
+      setIsCorrect(true)
+      alert("GGs! Your List is Correct!")
+    }
   } 
   const handleReset=(e)=>{
     e.preventDefault()
