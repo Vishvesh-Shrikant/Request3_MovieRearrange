@@ -6,7 +6,7 @@ import SwapList from './SwapList'
 
 const MainMovieSort = () => {
     const [movieList, setMovieList]=useState(movies)
-  const [isCorrect, setIsCorrect]=useState(false)
+  const [isCorrect, setIsCorrect]=useState(null)
   
   const shuffleMovieList=(movie)=>{
     let shuffledArr=[]
@@ -53,21 +53,21 @@ const MainMovieSort = () => {
 
   const handleClick=(e)=>{
     e.preventDefault();
-    let flag=0;
+    let flag;
     setIsCorrect(false)
     for (let i=0; i< movieList.length - 1; i++)
     {
       if(movieList[i].id < movieList[i+1].id)
         flag=1;
       else
-        flag=0
+      {
+        setIsCorrect(false)
+        alert("Incorrect List Order! Try Again")
+        flag=0;
+        return;
+      }
     }
-    if(flag==0)
-    {
-      setIsCorrect(false)
-      alert("Incorrect List Order! Try Again")
-    }
-    else if(flag==1)
+    if(flag==1)
     {
       setIsCorrect(true)
       alert("GGs! Your List is Correct!")
@@ -75,7 +75,7 @@ const MainMovieSort = () => {
   } 
   const handleReset=(e)=>{
     e.preventDefault()
-    setIsCorrect(false)
+    setIsCorrect(null)
     shuffleMovieList(movieList)
   }
 
