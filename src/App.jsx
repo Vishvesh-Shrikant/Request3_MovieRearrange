@@ -1,8 +1,6 @@
 import React from 'react'
 import './App.css'
 import MainMovieSort from './Components/MovieSorter/MainMovieSort'
-import ArcReactorLoader from './Components/ArcReactor/ArcReactorLoader'
-import Wordle from './Components/Wordle/Wordle'
 import bg3 from './assets/bg3.png'
 
 
